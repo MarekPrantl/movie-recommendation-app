@@ -1,0 +1,15 @@
+@forward './components/colors/colors';
+
+@use './components/colors/colors';
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: colors.$bcg-color;
+}
+
+h1, h2, h3, h4, h5, h6, p, span {
+    color: #fff;
+}
