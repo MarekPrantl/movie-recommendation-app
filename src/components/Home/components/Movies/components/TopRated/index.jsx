@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography'
+import Box from '@material-ui/core/Box'
 
 import List from '../List'
 
@@ -8,32 +9,34 @@ import hocConnect from './hocConnect'
 import './styles.scss'
 
 @hocConnect
-export default class Trending extends Component {
+export default class TopRated extends Component {
     static propTypes = {
-        timeWindow: PropTypes.string.isRequired,
-        mediaType: PropTypes.string.isRequired,
         loadData: PropTypes.func.isRequired,
         data: PropTypes.array,
     }
 
     componentDidMount() {
-        const { timeWindow, mediaType, loadData } = this.props
+        const { loadData } = this.props
 
-        if (!timeWindow || !mediaType) {
-            return
-        }
-
-        loadData(mediaType, timeWindow)
+        loadData()
     }
 
     render() {
-        const { timeWindow, data } = this.props
+        const { data } = this.props
 
         return (
-            <div className={'trending-container'}>
+            <div className={'top-rated-container'}>
                 <div className="title-container">
                     <Typography variant="h4">
-                        <span>{`Trending ${timeWindow === 'day' ? 'Today' : 'This Week'}`}</span>
+                        <span>{'Top Rated'}</span>
+                        <Box
+                            style={{ paddingLeft: '8px', opacity: '0.75' }}
+                            component="span"
+                            fontWeight={'fontWeightLight'}
+                            fontSize={12}
+                        >
+                            {'(based on vote count and vote average)'}
+                        </Box>
                     </Typography>
                 </div>
                 <div className="list-container">

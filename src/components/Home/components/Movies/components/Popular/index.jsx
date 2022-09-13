@@ -8,32 +8,26 @@ import hocConnect from './hocConnect'
 import './styles.scss'
 
 @hocConnect
-export default class Trending extends Component {
+export default class Popular extends Component {
     static propTypes = {
-        timeWindow: PropTypes.string.isRequired,
-        mediaType: PropTypes.string.isRequired,
         loadData: PropTypes.func.isRequired,
         data: PropTypes.array,
     }
 
     componentDidMount() {
-        const { timeWindow, mediaType, loadData } = this.props
+        const { loadData } = this.props
 
-        if (!timeWindow || !mediaType) {
-            return
-        }
-
-        loadData(mediaType, timeWindow)
+        loadData()
     }
 
     render() {
-        const { timeWindow, data } = this.props
+        const { data } = this.props
 
         return (
-            <div className={'trending-container'}>
+            <div className={'popular-container'}>
                 <div className="title-container">
                     <Typography variant="h4">
-                        <span>{`Trending ${timeWindow === 'day' ? 'Today' : 'This Week'}`}</span>
+                        <span>{'Popular'}</span>
                     </Typography>
                 </div>
                 <div className="list-container">

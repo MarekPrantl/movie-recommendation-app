@@ -1,7 +1,7 @@
 import { all, put, race, take, takeEvery } from 'redux-saga/effects'
 
 import { TRENDING_LOAD_DATA, TRENDING_LOAD_DATA_REQUEST } from './constants'
-import { loadDataRequest, setData, setLoading } from './actions'
+import { loadDataRequest, setData } from './actions'
 
 const TRENDING_LOAD_DATA_REQUEST_SUCCESS = (mediaType, timeWindow) =>
     `${TRENDING_LOAD_DATA_REQUEST(mediaType, timeWindow)}_SUCCESS`
@@ -16,8 +16,6 @@ function* loadData(action) {
         return null
     }
 
-    yield put(setLoading(mediaType, timeWindow, true))
-
     const data = yield all({
         response: race({
             success: take(TRENDING_LOAD_DATA_REQUEST_SUCCESS(mediaType, timeWindow)),
@@ -27,14 +25,12 @@ function* loadData(action) {
     })
 
     if (data?.response?.failed) {
-        yield put(setLoading(mediaType, timeWindow, false))
         return null
     }
 
     const body = data?.response?.success?.payload?.response?.body?.results
 
     yield put(setData(mediaType, timeWindow, body))
-    yield put(setLoading(mediaType, timeWindow, false))
     return null
 }
 

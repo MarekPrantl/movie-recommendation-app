@@ -1,0 +1,3 @@
+export const TOP_LOAD_DATA = 'TOP_LOAD_DATA'
+export const TOP_LOAD_DATA_REQUEST = 'TOP_LOAD_DATA_REQUEST'
+export const TOP_SET_DATA = 'TOP_SET_DATA'

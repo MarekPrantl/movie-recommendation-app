@@ -3,12 +3,12 @@ import { Route, Switch } from 'react-router'
 import { IntlProvider } from 'react-intl'
 import { ThemeProvider } from '@material-ui/core/styles'
 import { createTheme } from '@material-ui/core/styles'
+import Container from '@material-ui/core/Container'
 
 import messages from '../i18n/messages'
 
-// import auth from '../services/auth'
-
-// import Auth from '../components/Auth'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 import Home from '../components/Home'
 import Movie from '../components/Movie'
 
@@ -30,7 +30,6 @@ const theme = createTheme({
     },
 })
 
-// @auth(Auth)
 export default class App extends Component {
     render() {
         const locale = defaultLocale
@@ -39,11 +38,15 @@ export default class App extends Component {
             <IntlProvider textComponent="span" key={locale} locale={locale} messages={messages[locale]}>
                 <ThemeProvider theme={theme}>
                     <div className={'app-container'}>
-                        <Switch>
-                            <Route path={'/'} exact render={() => <Home />} />
-                            <Route path={'/movie/:id'} exact render={() => <Movie />} />
-                            <Route path={'/movie'} exact render={() => <Movie />} />
-                        </Switch>
+                        <Header />
+                        <Container maxWidth="lg">
+                            <Switch>
+                                <Route path={'/'} exact render={() => <Home />} />
+                                <Route path={'/movie/:id'} exact render={() => <Movie {...this.props} />} />
+                                <Route path={'/movie'} exact render={() => <Movie {...this.props} />} />
+                            </Switch>
+                        </Container>
+                        <Footer />
                     </div>
                 </ThemeProvider>
             </IntlProvider>

@@ -14,13 +14,13 @@ export default class List extends Component {
     render() {
         const { data, listId } = this.props
 
-        if (data?.length <= 0) return null
-
         return (
             <div id={listId} className={'movies-list'}>
-                {data?.map((movie, indx) => (
-                    <Item key={`${listId}-movie-${indx}`} index={indx} data={movie || {}} />
-                ))}
+                {data?.length > 0 ? (
+                    data?.map((movie, indx) => <Item key={`${listId}-movie-${indx}`} index={indx} data={movie || {}} />)
+                ) : (
+                    <div className={'loading-overlay'} />
+                )}
             </div>
         )
     }

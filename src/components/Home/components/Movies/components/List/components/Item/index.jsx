@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import Typography from '@material-ui/core/Typography'
+import Box from '@material-ui/core/Box'
 
 import { getTMDBImage } from '../../../../../../../../global/helpers'
+
+import UserScore from '../../../../../../../../global/components/UserScore'
+import Date from '../../../../../../../../global/components/Date'
 
 import hocConnect from './hocConnect'
 import './styles.scss'
@@ -38,7 +43,21 @@ export default class Item extends Component {
             >
                 <div className={'overlay'} />
                 <div className="content">
-                    <p>{data?.title ?? data?.name}</p>
+                    <Typography>
+                        <Box component="span" fontWeight={'fontWeightBold'}>
+                            {data?.title ?? data?.name ?? ''}
+                        </Box>
+                    </Typography>
+                    <Typography>
+                        <Box component="span" fontWeight={'fontWeightLight'}>
+                            <Date date={data?.release_date} />
+                        </Box>
+                    </Typography>
+                    <Typography>
+                        <Box component="span">
+                            <UserScore score={data?.vote_average} />
+                        </Box>
+                    </Typography>
                 </div>
             </div>
         )

@@ -4,12 +4,9 @@ import { bindActionCreators } from 'redux'
 
 import { loadData } from './actions'
 
-function mapStateToProps(state, hocProps) {
-    const mediaType = hocProps?.mediaType
-    const timeWindow = hocProps?.timeWindow
-
+function mapStateToProps(state) {
     return {
-        data: state.getIn(['movies', 'trending', mediaType, timeWindow, 'data'], []),
+        data: state.getIn(['movies', 'topRated', 'data'], []),
     }
 }
 

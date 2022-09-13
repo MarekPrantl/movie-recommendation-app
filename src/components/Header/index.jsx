@@ -8,10 +8,10 @@ import './styles.scss'
 export default class Header extends Component {
     render() {
         return (
-            <div className={'home-header'}>
-                <AppBar position={'static'} className={'home-header-bar'}>
+            <div className={'header'}>
+                <AppBar position={'static'} className={'header-bar'}>
                     <Container maxWidth="lg">
-                        <Typography className={'home-title'} variant={'h6'} noWrap>
+                        <Typography className={'title'} variant={'h6'} noWrap>
                             {'Movie recommender'}
                         </Typography>
                     </Container>

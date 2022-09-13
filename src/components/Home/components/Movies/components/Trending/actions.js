@@ -1,6 +1,6 @@
 import config from '../../../../../../config'
 
-import { TRENDING_LOAD_DATA, TRENDING_LOAD_DATA_REQUEST, TRENDING_SET_DATA, TRENDING_SET_LOADING } from './constants'
+import { TRENDING_LOAD_DATA, TRENDING_LOAD_DATA_REQUEST, TRENDING_SET_DATA } from './constants'
 
 export const loadData = (mediaType, timeWindow) => ({
     type: TRENDING_LOAD_DATA,
@@ -27,14 +27,5 @@ export const setData = (mediaType, timeWindow, data) => ({
         mediaType,
         timeWindow,
         data,
-    },
-})
-
-export const setLoading = (mediaType, timeWindow, loading) => ({
-    type: TRENDING_SET_LOADING,
-    data: {
-        mediaType,
-        timeWindow,
-        loading,
     },
 })
