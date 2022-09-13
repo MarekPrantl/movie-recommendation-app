@@ -40,9 +40,9 @@ export default class App extends Component {
                 <ThemeProvider theme={theme}>
                     <div className={'app-container'}>
                         <Switch>
-                            <Route path={'*'} component={Home} />
-                            <Route path={'/movie/:id'} component={Movie} />
-                            <Route path={'/movie'} component={Movie} />
+                            <Route path={'/'} exact render={() => <Home />} />
+                            <Route path={'/movie/:id'} exact render={() => <Movie />} />
+                            <Route path={'/movie'} exact render={() => <Movie />} />
                         </Switch>
                     </div>
                 </ThemeProvider>

@@ -1,0 +1,56 @@
+.movies-list-item {
+    flex: 1 1 200px;
+    min-width: 200px;
+    width: 200px;
+    height: 100%;
+    border-radius: 8px;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+    transition: all 250ms ease;
+
+    background: {
+        repeat: no-repeat;
+        size: 100% 100%;
+        position: center center;
+        color: transparent;
+    }
+
+    &:not(:last-of-type) {
+        margin-right: 16px;
+    }
+
+    &:hover {
+        background-size: 105% 105%;
+    }
+
+    .overlay {
+        width: 100%;
+        height: 100%;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 8px;
+        background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+        z-index: 2;
+    }
+
+    .content {
+        width: calc(100% - 32px);
+        height: calc(100% - 32px);
+        padding: 16px;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        position: relative;
+        text-align: center;
+
+        &>* {
+            z-index: 3;
+        }
+
+    }
+}

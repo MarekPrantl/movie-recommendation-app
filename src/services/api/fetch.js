@@ -50,8 +50,10 @@ export default function (...params) {
         uri = parametrize(uri, uriParams)
     }
 
-    if (!_.isEmpty(qs)) {
-        uri = `${uri}?${encode(qs)}`
+    const _qs = { ...qs, api_key: process.env.TMDB_API_KEY }
+
+    if (!_.isEmpty(_qs)) {
+        uri = `${uri}?${encode(_qs)}`
     }
 
     // eslint-disable-next-line no-undef

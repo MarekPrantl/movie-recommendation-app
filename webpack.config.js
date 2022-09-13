@@ -1,4 +1,5 @@
 const path = require('path')
+const Dotenv = require('dotenv-webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
@@ -12,6 +13,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.join(__dirname, 'public', 'index.html'),
         }),
+        new Dotenv(),
     ],
     module: {
         // exclude node_modules
@@ -47,6 +49,7 @@ module.exports = {
             directory: path.join(__dirname, 'build'),
         },
         port: 3000,
+        historyApiFallback: true,
     },
     // pass all js files through Babel
     resolve: {
