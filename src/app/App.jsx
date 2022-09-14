@@ -11,6 +11,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Home from '../components/Home'
 import Movie from '../components/Movie'
+import Search from '../components/Search'
 
 import './styles.scss'
 
@@ -44,6 +45,7 @@ export default class App extends Component {
                                 <Route path={'/'} exact render={() => <Home />} />
                                 <Route path={'/movie/:id'} exact render={() => <Movie {...this.props} />} />
                                 <Route path={'/movie'} exact render={() => <Movie {...this.props} />} />
+                                <Route path={'/search'} exact render={() => <Search {...this.props} />} />
                             </Switch>
                         </Container>
                         <Footer />

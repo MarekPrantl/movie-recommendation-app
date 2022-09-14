@@ -17,7 +17,7 @@ export default class List extends Component {
         return (
             <div id={listId} className={'movies-list'}>
                 {data?.length > 0 ? (
-                    data?.map((movie, indx) => <Item key={`${listId}-movie-${indx}`} index={indx} data={movie || {}} />)
+                    data?.map((movie, indx) => <Item key={`${listId}-movie-${indx}`} data={movie || {}} />)
                 ) : (
                     <div className={'loading-overlay'} />
                 )}

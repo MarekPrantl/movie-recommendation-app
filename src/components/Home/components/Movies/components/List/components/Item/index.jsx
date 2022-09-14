@@ -10,6 +10,7 @@ import Date from '../../../../../../../../global/components/Date'
 
 import hocConnect from './hocConnect'
 import './styles.scss'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 @hocConnect
 export default class Item extends Component {
@@ -25,22 +26,34 @@ export default class Item extends Component {
         push(`/movie/${data?.id}`)
     }
 
-    handleMovieKeyPress = () => {}
+    handleMovieKeyPress = (e) => {
+        const { data, push } = this.props
+
+        if (e.charCode === 13) {
+            push(`/movie/${data?.id}`)
+        }
+    }
 
     render() {
-        const { data, index } = this.props
+        const { data } = this.props
 
         if (data?.length <= 0) return null
 
         return (
             <div
                 className={'movies-list-item'}
-                style={{ backgroundImage: `url(${getTMDBImage(data?.poster_path)})` }}
                 onClick={this.handleMovieClick}
                 onKeyPress={this.handleMovieKeyPress}
                 role={'link'}
-                tabIndex={index}
+                tabIndex={0}
             >
+                <figure className={'movie-item-poster'}>
+                    <LazyLoadImage
+                        alt={`${data?.title ?? data?.name} - poster image`}
+                        src={`${getTMDBImage(data?.poster_path)}`}
+                        placeholder={<div className={'figure-placeholder'} />}
+                    />
+                </figure>
                 <div className={'overlay'} />
                 <div className="content">
                     <Typography>
