@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
+import _ from 'lodash'
 
 import List from '../List'
 
@@ -16,7 +17,9 @@ export default class TopRated extends Component {
     }
 
     componentDidMount() {
-        const { loadData } = this.props
+        const { loadData, data } = this.props
+
+        if (!_.isEmpty(data)) return null
 
         loadData()
     }

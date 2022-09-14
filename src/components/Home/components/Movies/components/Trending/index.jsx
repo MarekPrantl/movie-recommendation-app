@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography'
+import _ from 'lodash'
 
 import List from '../List'
 
@@ -17,9 +18,9 @@ export default class Trending extends Component {
     }
 
     componentDidMount() {
-        const { timeWindow, mediaType, loadData } = this.props
+        const { timeWindow, mediaType, loadData, data } = this.props
 
-        if (!timeWindow || !mediaType) {
+        if (!timeWindow || !mediaType || !_.isEmpty(data)) {
             return
         }
 

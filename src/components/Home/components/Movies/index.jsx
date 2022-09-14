@@ -10,8 +10,8 @@ export default class Movies extends Component {
     render() {
         return (
             <div className={'movies'}>
-                <Trending timeWindow={'day'} mediaType={'all'} />
-                <Trending timeWindow={'week'} mediaType={'all'} />
+                <Trending timeWindow={'day'} mediaType={'movie'} />
+                <Trending timeWindow={'week'} mediaType={'movie'} />
                 <Popular />
                 <TopRated />
             </div>

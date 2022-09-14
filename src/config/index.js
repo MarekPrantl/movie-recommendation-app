@@ -18,7 +18,7 @@ export default {
                 method: 'GET',
             },
             movie: {
-                uri: `${MOVIES_API_BASE_URL}/movie/:id`,
+                uri: `${MOVIES_API_BASE_URL}/movie/:movie_id`,
                 method: 'GET',
             },
             genres: {
