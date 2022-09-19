@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import _ from 'lodash'
 
 import BreadcrumbsRow from './components/BreadcrumbsRow'
+import AdditionalInfo from './components/AdditionalInfo'
+import Discover from './components/Discover'
 import Hero from './components/Hero'
 
 import hocConnect from './hocConnect'
@@ -15,6 +17,8 @@ export default class Movie extends Component {
         loadMovieData: PropTypes.func.isRequired,
         deleteAllMovieData: PropTypes.func.isRequired,
         data: PropTypes.object,
+        loading: PropTypes.bool,
+        pathKey: PropTypes.string,
     }
 
     constructor(props) {
@@ -26,7 +30,7 @@ export default class Movie extends Component {
     }
 
     componentDidMount() {
-        const { history, loadMovieData, data } = this.props
+        const { history, loadMovieData } = this.props
 
         const movieId = parseInt(history?.location?.pathname?.split('/').pop())
 
@@ -34,8 +38,6 @@ export default class Movie extends Component {
             this.setState({ noId: true })
             return null
         }
-
-        if (!_.isEmpty(data)) return null
 
         loadMovieData(movieId)
     }
@@ -47,13 +49,21 @@ export default class Movie extends Component {
     }
 
     render() {
-        const { data } = this.props
+        const { data, loading } = this.props
         const { noId } = this.state
+
+        const genres = data?.genres || []
 
         return (
             <div className={'movie'}>
                 <BreadcrumbsRow data={data} noId={noId} />
-                <Hero data={data} noId={noId} />
+                <Hero data={data} loading={loading} noId={noId} />
+                {!loading && !noId && <AdditionalInfo data={data} />}
+                {!loading &&
+                    !noId &&
+                    genres?.map((genre) => (
+                        <Discover key={`movie-discover-${genre?.name}`} genre={genre?.name} genreId={genre?.id} />
+                    ))}
             </div>
         )
     }

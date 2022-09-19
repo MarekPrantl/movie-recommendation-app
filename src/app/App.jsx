@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Route, Switch } from 'react-router'
 import { IntlProvider } from 'react-intl'
 import { ThemeProvider } from '@material-ui/core/styles'
@@ -12,6 +13,8 @@ import Footer from '../components/Footer'
 import Home from '../components/Home'
 import Movie from '../components/Movie'
 import Search from '../components/Search'
+import Login from '../components/Login'
+import Profile from '../components/Profile'
 
 import './styles.scss'
 
@@ -32,8 +35,15 @@ const theme = createTheme({
 })
 
 export default class App extends Component {
+    static propTypes = {
+        history: PropTypes.object,
+    }
+
     render() {
+        const { history } = this.props
         const locale = defaultLocale
+
+        const pathKey = history?.location?.key
 
         return (
             <IntlProvider textComponent="span" key={locale} locale={locale} messages={messages[locale]}>
@@ -42,10 +52,20 @@ export default class App extends Component {
                         <Header />
                         <Container maxWidth="lg">
                             <Switch>
-                                <Route path={'/'} exact render={() => <Home />} />
-                                <Route path={'/movie/:id'} exact render={() => <Movie {...this.props} />} />
-                                <Route path={'/movie'} exact render={() => <Movie {...this.props} />} />
-                                <Route path={'/search'} exact render={() => <Search {...this.props} />} />
+                                <Route path={'/'} exact render={() => <Home key={pathKey} />} />
+                                <Route
+                                    path={'/movie/:id'}
+                                    exact
+                                    render={() => <Movie history={history} key={pathKey} />}
+                                />
+                                <Route path={'/movie'} exact render={() => <Movie history={history} key={pathKey} />} />
+                                <Route
+                                    path={'/search'}
+                                    exact
+                                    render={() => <Search history={history} key={pathKey} />}
+                                />
+                                <Route path={'/login'} exact render={() => <Login history={history} key={pathKey} />} />
+                                <Route path={'/profile'} exact render={() => <Profile />} />
                             </Switch>
                         </Container>
                         <Footer />

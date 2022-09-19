@@ -6,10 +6,20 @@ import trendingSaga from '../components/Home/components/Movies/components/Trendi
 import popularSaga from '../components/Home/components/Movies/components/Popular/saga'
 import topRatedSaga from '../components/Home/components/Movies/components/TopRated/saga'
 import movieSaga from '../components/Movie/saga'
+import discoverSaga from '../components/Movie/components/Discover/saga'
+import authorizationSaga from '../components/Login/saga'
 
 /**
  * Root generator for all application sagas
  */
 export default function* () {
-    yield all([apiSaga(), trendingSaga(), popularSaga(), topRatedSaga(), movieSaga()])
+    yield all([
+        apiSaga(),
+        trendingSaga(),
+        popularSaga(),
+        topRatedSaga(),
+        movieSaga(),
+        discoverSaga(),
+        authorizationSaga(),
+    ])
 }

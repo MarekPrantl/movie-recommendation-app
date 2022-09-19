@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { push } from 'connected-react-router'
+
+import { login } from './actions'
 
 function mapStateToProps(state) {
     return {
-        isAuthorized: state.getIn(['authorization', 'isAuthorized'], false),
-        user: state.getIn(['authorization', 'user'], false),
+        loading: state.getIn(['authorization', 'loading'], false),
+        error: state.getIn(['authorization', 'error'], null),
     }
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ push }, dispatch)
+    return bindActionCreators({ login }, dispatch)
 }
 
 export default function (InnerComponent) {

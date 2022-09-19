@@ -1,0 +1,17 @@
+.movie-additional-info {
+    width: 100%;
+    padding: 16px 0;
+    margin: 0;
+
+    .grid-wrapper {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+
+        .grid-column {
+            height: 100%;
+            padding: 16px 8px;
+        }
+    }
+}

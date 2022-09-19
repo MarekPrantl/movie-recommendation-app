@@ -1,17 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { push } from 'connected-react-router'
 
-function mapStateToProps(state) {
+import { loadData } from './actions'
+
+function mapStateToProps(state, hocProps) {
+    const genre = hocProps?.genre
+
     return {
-        isAuthorized: state.getIn(['authorization', 'isAuthorized'], false),
-        user: state.getIn(['authorization', 'user'], false),
+        data: state.getIn(['discover', genre, 'data'], []),
     }
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ push }, dispatch)
+    return bindActionCreators({ loadData }, dispatch)
 }
 
 export default function (InnerComponent) {

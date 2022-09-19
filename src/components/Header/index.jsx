@@ -12,6 +12,8 @@ import './styles.scss'
 export default class Header extends Component {
     static propTypes = {
         push: PropTypes.func.isRequired,
+        isAuthorized: PropTypes.bool,
+        user: PropTypes.object,
     }
 
     handleHomeClick = () => {
@@ -28,7 +30,21 @@ export default class Header extends Component {
         }
     }
 
+    handleProfileOnClick = () => {
+        const { isAuthorized, push } = this.props
+
+        if (!isAuthorized) {
+            push('/login')
+            return null
+        }
+
+        push('/profile')
+        return null
+    }
+
     render() {
+        const { isAuthorized, user } = this.props
+
         return (
             <div className={'header'}>
                 <AppBar position={'static'} className={'header-bar'}>
@@ -48,7 +64,7 @@ export default class Header extends Component {
                             <div className="app-bar-btns">
                                 <button onClick={this.handleProfileOnClick} className="profile">
                                     <PersonRoundedIcon />
-                                    <Typography>{'Sign In'}</Typography>
+                                    <Typography>{!isAuthorized ? 'Sign In' : user?.username}</Typography>
                                 </button>
                             </div>
                         </div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Breadcrumbs from '@material-ui/core/Breadcrumbs'
+import Typography from '@material-ui/core/Typography'
 import Link from '@material-ui/core/Link'
 
 import hocConnect from './hocConnect'
@@ -30,15 +31,15 @@ export default class BreadcrumbsRow extends Component {
                 {!noId ? (
                     <Breadcrumbs separator="››" aria-label="breadcrumb">
                         <Link className={'breadcrumb-link'} color="inherit" onClick={() => this.handleClick('/')}>
-                            {'Home'}
+                            <Typography>{'Home'}</Typography>
                         </Link>
                         <Link className={'breadcrumb-link'} color="textPrimary" onClick={() => this.handleClick(null)}>
-                            {data?.title ?? data?.name ?? 'Missing title'}
+                            <Typography>{data?.title ?? data?.name ?? 'Missing title'}</Typography>
                         </Link>
                     </Breadcrumbs>
                 ) : (
                     <Link className={'breadcrumb-link'} color="inherit" onClick={() => this.handleClick('/')}>
-                        {'Home'}
+                        <Typography>{'Home'}</Typography>
                     </Link>
                 )}
             </div>
