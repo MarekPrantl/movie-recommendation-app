@@ -47,10 +47,12 @@ The mock up files and user configurations can be found in `src/assets/mock/users
 
 ### Admin
 Username: admin
+
 Password: root123
 
 ### User
 Username: user
+
 Password: letmein
 
 ## Technologies
