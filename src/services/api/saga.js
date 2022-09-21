@@ -15,10 +15,9 @@ function isRequestAction(_action) {
  */
 export function* requestCallSaga(_action) {
     try {
-        // prepare header and call request
         const headers = {}
 
-        // retry is specified
+        // if retry is specified
         const _retry = _action?.optional?.retry ?? null // eslint-disable-line no-underscore-dangle
 
         let result = null
@@ -31,18 +30,14 @@ export function* requestCallSaga(_action) {
             result = yield call(fetch, { headers }, _action.payload)
         }
 
-        // dispatch success action
         yield put(createResultAction(_action, 'SUCCESS', { response: result }))
     } catch (_err) {
-        // dispatch error action
         yield put(createResultAction(_action, 'FAILED', { error: _err }))
 
-        // show error toast
         if (_err.code === 500) {
             console.error(_err)
         }
     } finally {
-        // dispatch complete action
         yield put(createResultAction(_action, 'COMPLETE'))
     }
     return null

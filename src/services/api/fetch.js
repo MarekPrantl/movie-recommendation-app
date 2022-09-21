@@ -56,7 +56,6 @@ export default function (...params) {
         uri = `${uri}?${encode(_qs)}`
     }
 
-    // eslint-disable-next-line no-undef
     return fetch(uri, reqOptions)
         .then((_response) => {
             if (!_response.ok) {
