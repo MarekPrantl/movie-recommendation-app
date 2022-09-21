@@ -12,6 +12,7 @@ export const loadDataRequest = () => ({
         ...config.api.movies.discover,
         qs: {
             sort_by: 'popularity.desc',
+            include_adult: false,
         },
     },
 })

@@ -17,6 +17,7 @@ export const loadDataRequest = (genreId) => ({
         qs: {
             with_genres: genreId,
             sort_by: ['vote_average.desc', 'vote_count.desc'],
+            include_adult: false,
         },
     },
 })

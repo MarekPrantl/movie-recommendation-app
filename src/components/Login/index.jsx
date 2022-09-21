@@ -8,6 +8,8 @@ import VisibilityRoundedIcon from '@material-ui/icons/VisibilityRounded'
 import VisibilityOffRoundedIcon from '@material-ui/icons/VisibilityOffRounded'
 import cx from 'classnames'
 
+import Breadcrumbs from '../../global/components/Breadcrumbs'
+
 import Notice from './components/Notice'
 
 import hocConnect from './hocConnect'
@@ -171,6 +173,11 @@ export default class Login extends Component {
     }
 
     render() {
-        return <div className={'login'}>{this.renderContent()}</div>
+        return (
+            <>
+                <Breadcrumbs paths={[{ title: 'Home', path: '/' }, { title: 'Login' }]} />
+                <div className={'login'}>{this.renderContent()}</div>
+            </>
+        )
     }
 }

@@ -25,6 +25,10 @@ export default {
                 uri: `${MOVIES_API_BASE_URL}/genre/movie/list`,
                 method: 'GET',
             },
+            search: {
+                uri: `${MOVIES_API_BASE_URL}/search/movie`,
+                method: 'GET',
+            },
         },
     },
     tmdb: {

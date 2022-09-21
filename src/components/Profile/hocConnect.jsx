@@ -3,14 +3,20 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { push } from 'connected-react-router'
 
-import { searchSetQuery } from '../../../Search/actions'
+import { logout } from '../Login/actions'
+
+function mapStateToProps(state) {
+    return {
+        user: state.getIn(['authorization', 'user'], {}),
+    }
+}
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ push, searchSetQuery }, dispatch)
+    return bindActionCreators({ logout, push }, dispatch)
 }
 
 export default function (InnerComponent) {
-    @connect(null, mapDispatchToProps)
+    @connect(mapStateToProps, mapDispatchToProps)
     class HocConnect extends Component {
         render() {
             return <InnerComponent {...this.props} />

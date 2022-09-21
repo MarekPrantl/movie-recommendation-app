@@ -8,6 +8,7 @@ import topRatedSaga from '../components/Home/components/Movies/components/TopRat
 import movieSaga from '../components/Movie/saga'
 import discoverSaga from '../components/Movie/components/Discover/saga'
 import authorizationSaga from '../components/Login/saga'
+import searchSaga from '../components/Search/saga'
 
 /**
  * Root generator for all application sagas
@@ -21,5 +22,6 @@ export default function* () {
         movieSaga(),
         discoverSaga(),
         authorizationSaga(),
+        searchSaga(),
     ])
 }

@@ -1,0 +1,21 @@
+.breadcrumbs-row {
+    width: 100%;
+    padding: 16px 0;
+
+    .breadcrumb-link {
+
+        &:hover {
+            text-decoration: none;
+        }
+
+        &.clickable {
+            cursor: pointer;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+    
+    
+}

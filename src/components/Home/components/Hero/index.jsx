@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography'
-import InputBase from '@material-ui/core/InputBase'
 import SearchIcon from '@material-ui/icons/Search'
+import cx from 'classnames'
 
 import hocConnect from './hocConnect'
 import './styles.scss'
@@ -11,6 +11,7 @@ import './styles.scss'
 export default class Header extends Component {
     static propTypes = {
         push: PropTypes.func.isRequired,
+        searchSetQuery: PropTypes.func.isRequired,
     }
 
     constructor(props) {
@@ -28,11 +29,12 @@ export default class Header extends Component {
     }
 
     handleSearchInputKeyDown = (e) => {
-        const { push } = this.props
+        const { push, searchSetQuery } = this.props
         const { searchValue } = this.state
 
         if (e.keyCode === 13) {
-            push('/search', { searchValue })
+            searchSetQuery(searchValue)
+            push('/search')
         }
     }
 
@@ -43,17 +45,16 @@ export default class Header extends Component {
                 <div className="text-container">
                     <Typography variant={'h3'}>{'Welcome!'}</Typography>
                     <Typography variant={'h5'}>{'Looking for a movie recommendation? Look no further!'}</Typography>
-                    <div className="search-bar">
-                        <div className="search-icon">
-                            <SearchIcon />
-                        </div>
-                        <InputBase
-                            className={'search-input'}
-                            placeholder="Search…"
-                            inputProps={{ 'aria-label': 'search' }}
-                            onKeyDown={this.handleSearchInputKeyDown}
+                    <div className="input-field search-bar without-label">
+                        <input
+                            type={'text'}
+                            className={cx('text-input with-icon')}
+                            name={'search'}
+                            placeholder={'Search...'}
                             onChange={this.handleSearchInputChange}
-                        />
+                            onKeyDown={this.handleSearchInputKeyDown}
+                        ></input>
+                        <SearchIcon className={'input-icon'} />
                     </div>
                 </div>
             </div>

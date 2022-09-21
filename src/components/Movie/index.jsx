@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 
-import BreadcrumbsRow from './components/BreadcrumbsRow'
+import BreadcrumbsRow from '../../global/components/Breadcrumbs'
 import AdditionalInfo from './components/AdditionalInfo'
 import Discover from './components/Discover'
 import Hero from './components/Hero'
@@ -53,10 +53,15 @@ export default class Movie extends Component {
         const { noId } = this.state
 
         const genres = data?.genres || []
+        const breadcrumbsPaths = [{ title: 'Home', path: '/' }]
+
+        if (!noId) {
+            breadcrumbsPaths.push({ title: data?.title ?? data?.name ?? '' })
+        }
 
         return (
             <div className={'movie'}>
-                <BreadcrumbsRow data={data} noId={noId} />
+                <BreadcrumbsRow paths={breadcrumbsPaths} />
                 <Hero data={data} loading={loading} noId={noId} />
                 {!loading && !noId && <AdditionalInfo data={data} />}
                 {!loading &&

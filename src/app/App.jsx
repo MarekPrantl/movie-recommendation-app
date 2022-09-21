@@ -15,6 +15,7 @@ import Movie from '../components/Movie'
 import Search from '../components/Search'
 import Login from '../components/Login'
 import Profile from '../components/Profile'
+import Admin from '../components/Admin'
 
 import './styles.scss'
 
@@ -65,7 +66,8 @@ export default class App extends Component {
                                     render={() => <Search history={history} key={pathKey} />}
                                 />
                                 <Route path={'/login'} exact render={() => <Login history={history} key={pathKey} />} />
-                                <Route path={'/profile'} exact render={() => <Profile />} />
+                                <Route path={'/profile'} exact render={() => <Profile key={pathKey} />} />
+                                <Route path={'/admin'} exact render={() => <Admin history={history} key={pathKey} />} />
                             </Switch>
                         </Container>
                         <Footer />

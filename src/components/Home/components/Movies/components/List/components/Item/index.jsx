@@ -66,11 +66,9 @@ export default class Item extends Component {
                             <Date date={data?.release_date} />
                         </Box>
                     </Typography>
-                    <Typography>
-                        <Box component="span">
-                            <UserScore score={data?.vote_average} />
-                        </Box>
-                    </Typography>
+                    <Box component="span">
+                        <UserScore score={data?.vote_average} />
+                    </Box>
                 </div>
             </div>
         )

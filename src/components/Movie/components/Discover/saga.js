@@ -22,8 +22,6 @@ function* loadData(action) {
         request: put(loadDataRequest(genreId)),
     })
 
-    console.log({ data })
-
     if (data?.response?.failed) {
         return null
     }

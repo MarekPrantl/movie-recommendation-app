@@ -1,0 +1,211 @@
+.input-field {
+    width: 100%;
+    margin-top: 8px;
+    margin-bottom: 30px;
+    position: relative;
+
+    .input-label {
+        display: inline-block;
+        max-width: 100%;
+        margin-bottom: 5px;
+        font-weight: 600;
+
+        &.disabled {
+            color: #D7E0E4;
+        }
+
+        &.error {
+            color: #cf3154;
+        }
+    }
+
+    input {
+        padding: 0 16px;
+        border-radius: 3px;
+        background-color: #2e333b;
+        background-image: none;
+        background-position: right 200%;
+        border: 1px solid #49515e;
+        width: calc(100% - 34px);
+        display: block;
+        font-size: 14px;
+        line-height: 45px;
+        color: #fff;
+        transition: all .5s;
+
+        &[disabled] {
+            cursor: not-allowed;
+            color: #728d96;
+            background-color: #f3f6f9;
+        }
+
+        &:focus {
+            outline: 0;
+            box-shadow: 0 0 5px rgb(0 158 206 / 80%);
+        }
+
+        &.with-icon {
+            padding-left: 42px;
+            width: calc(100% - 60px);
+        }
+
+        &.with-visib-icon {
+            padding-right: 50px;
+            width: calc(100% - 68px);
+
+            &.with-icon {
+                width: calc(100% - 94px);
+            }
+        }
+
+        &.error {
+            border-color: #cf3154;
+            color: #cf3154;
+        }
+
+        &:read-only {
+            outline: none;
+            box-shadow: none;
+        }
+
+        &.date-input {
+            &::-webkit-calendar-picker-indicator { 
+                filter: invert(1); // change icon to white
+            }
+        }
+
+        &.checkbox {
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+    .input-icon {
+        position: absolute;
+        top: 40px;
+        left: 8px;
+        font-size: 26px;
+        color: #bcc9db;
+
+        &.error {
+            color: #cf3154;
+        }
+    }
+
+    .input-subtext {
+        margin: 4px 0 0 0;
+        font-size: 12px;
+
+        &.error {
+            color: #cf3154;
+        }
+    }
+
+    .pass-visib-icon {
+        position: absolute;
+        top: 40px;
+        right: 16px;
+        font-size: 26px;
+        color: #bcc9db;
+        cursor: pointer;
+
+        &:hover {
+            color: #9faab9;
+        }
+    }
+
+    &.without-label {
+        .input-icon {
+            top: 10px;
+        }
+    }
+}
+
+.btn-full-width {
+    width: 100%;
+    padding: 12px 30px;
+    position: relative;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 3px;
+    color: #fff;
+    background-color: #009ECE;
+    border-color: transparent;
+    transition: all .5s;
+    cursor: pointer;
+
+    &:hover {
+        color: #fff;
+        background-color: #0088b1;
+    }
+}
+
+.buttonAsAnchor {
+    background: none;
+    outline: none;
+    border: none;
+    color: #009ECE;
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.00938em;
+
+    &:hover {
+        text-decoration: underline;
+        color: #0088b1;
+    }
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px 30px;
+    position: relative;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 3px;
+    color: #fff;
+    background-color: #009ECE;
+    border-color: transparent;
+    transition: all .5s;
+    cursor: pointer;
+
+    &[disabled] {
+        pointer-events: none;
+    }
+
+    .spinner {
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        left: 25%;
+        color: #fff;
+    }
+
+    &:hover {
+        color: #fff;
+        background-color: #0088b1;
+    }
+}
+
+.card {
+    margin-top: 24px;
+    padding: 16px;
+    background-color: #161B22;
+    border: 1px solid #49515e;
+    border-radius: 8px;
+
+    .card-row {
+        width: 100%;
+    }
+}
+
+.pill {
+    padding: 2px 4px;
+    border: 1px solid  #ccc;
+    color: #ccc;
+    border-radius: 3px;
+    font-size: 12px !important;
+    display: inline-block;
+}

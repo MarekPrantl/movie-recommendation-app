@@ -66,23 +66,28 @@
             padding: 24px;
 
             .title {
+                
                 h4 {
+                    position: relative;
                     margin-bottom: 4px;
+
+                    .admin-menu-icon {
+                        margin-left: 16px;
+                        border: 2px solid #fff;
+                        border-radius: 50%;
+                        font-size: 16px;
+                        cursor: pointer;
+                        transition: all 250ms;
+
+                        &:hover {
+                            transform: scale(1.2);
+                        }
+                    }
                 }
 
                 .sub-title {
                     display: flex;
                     align-items: center;
-
-
-                    .adult-pill {
-                        padding: 2px 4px;
-                        border: 1px solid  #ccc;
-                        color: #ccc;
-                        border-radius: 3px;
-                        font-size: 12px;
-                        display: inline-block;
-                    }
 
                     .sub-title-item {
                         font-size: 14px;
@@ -131,6 +136,13 @@
                     padding: 0;
                     border: 0;
                 }
+
+                .info-text {
+                    margin-top: 8px;
+                    p {
+                        font-size: 14px;
+                    }
+                }
             }
         }
     }
@@ -141,8 +153,14 @@
     .movie-hero {
         height: auto;
         .hero-container {
-            padding: 0;
+            width: calc(100% - 16px);
+            padding: 16px 8px;
             flex-direction: column;
+
+            .image-container {
+                width: 100%;
+                height: auto;
+            }
 
             .info-container {
                 width: 100%;

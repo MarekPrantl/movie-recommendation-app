@@ -3,10 +3,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { push } from 'connected-react-router'
 
-import { searchSetQuery } from '../../../Search/actions'
-
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ push, searchSetQuery }, dispatch)
+    return bindActionCreators({ push }, dispatch)
 }
 
 export default function (InnerComponent) {

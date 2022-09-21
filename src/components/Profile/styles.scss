@@ -1,0 +1,29 @@
+.profile {
+    .card {
+        .card-row {
+            .logout-btn {
+                background: transparent;
+                border: 1px solid #cf3154;
+                color: #cf3154;
+                
+                &:hover {
+                    background-color: rgba(207, 49, 84, 0.2);
+                }
+
+                p {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    .icon {
+                        padding-right: 8px;
+                    }
+                }
+            }
+
+            .add-movie-btn {
+                margin-bottom: 30px;
+            }
+        }
+    }
+}
