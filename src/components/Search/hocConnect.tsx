@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { push } from 'connected-react-router'
 
+import { IHocStateProps, IHocDispatchProps } from './interfaces'
+
 import { searchLoadResults, searchSetQuery } from './actions'
 
 function mapStateToProps(state) {
@@ -18,12 +20,11 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default function (InnerComponent) {
-    @connect(mapStateToProps, mapDispatchToProps)
     class HocConnect extends Component {
         render() {
             return <InnerComponent {...this.props} />
         }
     }
 
-    return HocConnect
+    return connect<IHocStateProps, IHocDispatchProps>(mapStateToProps, mapDispatchToProps)(HocConnect)
 }

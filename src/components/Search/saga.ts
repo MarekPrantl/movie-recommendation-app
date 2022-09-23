@@ -2,11 +2,12 @@ import { all, put, race, take, takeEvery } from 'redux-saga/effects'
 
 import { SEARCH_LOAD_RESULTS, SEARCH_LOAD_RESULTS_REQUEST } from './constants'
 import { searchLoadResultsRequest, searchSetLoading, searchSetResults } from './actions'
+import { ISearchActionLoadResults } from './actionTypes'
 
 const SEARCH_LOAD_RESULTS_REQUEST_SUCCESS = `${SEARCH_LOAD_RESULTS_REQUEST}_SUCCESS`
 const SEARCH_LOAD_RESULTS_REQUEST_FAILED = `${SEARCH_LOAD_RESULTS_REQUEST}_FAILED`
 
-function* loadData(action) {
+function* loadData(action: ISearchActionLoadResults) {
     const searchQuery = action?.data?.searchQuery
 
     if (!searchQuery) return null

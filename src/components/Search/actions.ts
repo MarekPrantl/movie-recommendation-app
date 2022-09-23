@@ -9,21 +9,21 @@ import {
     SEARCH_DELETE_ALL_DATA,
 } from './constants'
 
-export const searchSetQuery = (searchQuery) => ({
+export const searchSetQuery = (searchQuery: string) => ({
     type: SEARCH_SET_QUERY,
     data: {
         searchQuery,
     },
 })
 
-export const searchLoadResults = (searchQuery) => ({
+export const searchLoadResults = (searchQuery: string) => ({
     type: SEARCH_LOAD_RESULTS,
     data: {
         searchQuery,
     },
 })
 
-export const searchLoadResultsRequest = (searchQuery) => ({
+export const searchLoadResultsRequest = (searchQuery: string) => ({
     type: SEARCH_LOAD_RESULTS_REQUEST,
     payload: {
         ...config.api.movies.search,
@@ -34,14 +34,14 @@ export const searchLoadResultsRequest = (searchQuery) => ({
     },
 })
 
-export const searchSetLoading = (loading) => ({
+export const searchSetLoading = (loading: boolean) => ({
     type: SEARCH_SET_LOADING,
     data: {
         loading,
     },
 })
 
-export const searchSetResults = (data) => ({
+export const searchSetResults = (data: Array<object>) => ({
     type: SEARCH_SET_RESULTS,
     data: {
         data,

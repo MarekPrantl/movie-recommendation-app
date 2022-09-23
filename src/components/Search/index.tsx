@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography'
 import _ from 'lodash'
 
+import { ISearchProps, ISearchState } from './interfaces'
+
 import Breadcrumbs from '../../global/components/Breadcrumbs'
 
 import ListItem from './components/ListItem'
@@ -10,10 +12,8 @@ import ListItem from './components/ListItem'
 import hocConnect from './hocConnect'
 import './styles.scss'
 
-@hocConnect
-export default class Search extends Component {
+class Search extends Component<ISearchProps, ISearchState> {
     static propTypes = {
-        history: PropTypes.object,
         searchQuery: PropTypes.string,
         searchLoadResults: PropTypes.func.isRequired,
         searchSetQuery: PropTypes.func.isRequired,
@@ -29,13 +29,13 @@ export default class Search extends Component {
         }
     }
 
-    handleSearchInputChange = (e) => {
+    handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value
 
         this.setState({ searchValue: value })
     }
 
-    handleSearchInputKeyDown = (e) => {
+    handleSearchInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         const { searchSetQuery, searchLoadResults } = this.props
         const { searchValue } = this.state
 
@@ -111,3 +111,6 @@ export default class Search extends Component {
         )
     }
 }
+
+
+export default hocConnect(Search)
