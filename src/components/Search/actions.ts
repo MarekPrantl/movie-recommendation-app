@@ -9,6 +9,8 @@ import {
     SEARCH_DELETE_ALL_DATA,
 } from './constants'
 
+import { ISearchData } from './interfaces'
+
 export const searchSetQuery = (searchQuery: string) => ({
     type: SEARCH_SET_QUERY,
     data: {
@@ -41,7 +43,7 @@ export const searchSetLoading = (loading: boolean) => ({
     },
 })
 
-export const searchSetResults = (data: Array<object>) => ({
+export const searchSetResults = (data: ISearchData[]) => ({
     type: SEARCH_SET_RESULTS,
     data: {
         data,
